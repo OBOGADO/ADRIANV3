@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualidades do Adrian</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #f8b500, #fceabb);
+            text-align: center;
+            color: #333;
+            padding: 50px;
+        }
+        h1, h2 {
+            color: #fff;
+        }
+        .button, .option-button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .button:hover, .option-button:hover {
+            background: #45a049;
+        }
+        .qualities {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .qualities li {
+            background: #fff;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 20px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .qualities li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+        .hidden {
+            display: none;
+        }
+        #surprise {
+            background: #fff;
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <script>
+        function start() {
+            document.getElementById('start').classList.add('hidden');
+            document.getElementById('options').classList.remove('hidden');
+        }
+
+        function chooseOption() {
+            document.getElementById('options').classList.add('hidden');
+            document.getElementById('qualities').classList.remove('hidden');
+        }
+
+        function showSurprise(quality) {
+            const messages = {
+                'INTELIGÊNCIA EXTREMA': 'Sua inteligência brilha como uma estrela, sempre solucionando os problemas com facilidade e criatividade! ✨',
+                'BELEZA SURREAL': 'Sua beleza é tão impressionante que deixa todos ao seu redor sem palavras! 💫',
+                'CARISMA GIGANTESCO': 'Seu carisma é tão envolvente que faz qualquer um se sentir especial ao seu lado! 🌟',
+                'HUMOR CONTAGIANTE': 'Seu humor é tão contagiante que pode alegrar até os dias mais sombrios! 😂'
+            };
+            document.getElementById('surprise').classList.remove('hidden');
+            document.getElementById('message').innerText = messages[quality];
+        }
+    </script>
+</head>
+<body>
+    <div id="start">
+        <h1>Quem é o melhor amigo do mundo?</h1>
+        <button class="button" onclick="start()">Clique aqui para descobrir</button>
+    </div>
+    
+    <div id="options" class="hidden">
+        <h2>Escolha uma opção:</h2>
+        <button class="option-button" onclick="chooseOption()">Adrian</button>
+        <button class="option-button" onclick="chooseOption()">Adrian</button>
+    </div>
+    
+    <div id="qualities" class="hidden">
+        <h2>As Qualidades do Adrian</h2>
+        <ul class="qualities">
+            <li onclick="showSurprise('INTELIGÊNCIA EXTREMA')">INTELIGÊNCIA EXTREMA</li>
+            <li onclick="showSurprise('BELEZA SURREAL')">BELEZA SURREAL</li>
+            <li onclick="showSurprise('CARISMA GIGANTESCO')">CARISMA GIGANTESCO</li>
+            <li onclick="showSurprise('HUMOR CONTAGIANTE')">HUMOR CONTAGIANTE</li>
+        </ul>
+    </div>
+    
+    <div id="surprise" class="hidden">
+        <h2>Surpresa!</h2>
+        <p id="message"></p>
+    </div>
+</body>
+</html>
